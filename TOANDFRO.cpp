@@ -11,10 +11,31 @@ int main() {
 	cin.tie(NULL);
 
 	int n;
-	int i=1;
-	string s[22];
+	string s;
 	while(cin>>n && n){
-		getline(cin, s[i]);
+		cin.ignore();
+		getline(cin, s);
+
+		int m = s.length()/n;
+		char mat[m][n];
+		int x = 0;
+
+		for(int i=0;i<m;i++){
+			if(i%2==0){
+				for (int j = 0; j < n; ++j)
+					mat[i][j] = s[x++];
+			}
+			else
+			{
+				for (int j = n-1; j >= 0; --j)
+					mat[i][j] = s[x++];
+			}
+		}
+		for(int j=0;j<n;j++){
+			for(int k = 0;k<m;k++)
+				cout<<mat[k][j];
+		}
+		cout<<endl;
 	}
 
 	return 0;
